@@ -71,6 +71,13 @@ options:
         trying the command again.
     default: 1
     type: int
+  sendonly:
+    description:
+      - Send commands without waiting for a response / status code.
+        Can be useful for commands that cause module errors / command
+        timeouts.
+    default: False
+    type: bool
 '''
 
 EXAMPLES = """
@@ -169,7 +176,8 @@ def main():
         match=dict(default='all', choices=['all', 'any']),
 
         retries=dict(default=10, type='int'),
-        interval=dict(default=1, type='int')
+        interval=dict(default=1, type='int'),
+        sendonly=dict(default=False, type='bool')
     )
 
     module = AnsibleModule(

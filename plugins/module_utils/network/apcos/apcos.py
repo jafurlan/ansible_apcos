@@ -103,8 +103,9 @@ def run_commands(module, commands):
         command = cmd['command']
         prompt = cmd['prompt']
         answer = cmd['answer']
+        sendonly = module.params['sendonly']
 
-        out = connection.get(command, prompt, answer)
+        out = connection.get(command, prompt, answer, sendonly)
 
         try:
             out = to_text(out, errors='surrogate_or_strict')

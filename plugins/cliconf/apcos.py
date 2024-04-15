@@ -84,12 +84,14 @@ class Cliconf(CliconfBase):
                 prompt = cmd['prompt']
                 answer = cmd['answer']
                 newline = cmd.get('newline', True)
+                sendonly = cmd['sendonly']
             else:
                 command = cmd
                 prompt = None
                 answer = None
                 newline = True
-                self.send_command(command=command, prompt=prompt, answer=answer, sendonly=False, newline=newline)
+                sendonly = False
+                self.send_command(command=command, prompt=prompt, answer=answer, sendonly=sendonly, newline=newline)
 
     def get(self, command, prompt=None, answer=None, sendonly=False, newline=True, check_all=False):
         return self.send_command(command=command, prompt=prompt, answer=answer, sendonly=sendonly, newline=newline, check_all=check_all)
